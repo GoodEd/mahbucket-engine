@@ -51,7 +51,6 @@ module Mahbucket
       @current_user = Mahbucket.config.authorize_request.call request
       @logged_in = (not @current_user.nil?)
 
-      p @current_user
       unless @logged_in
         redirect_to "/login?next=/mahbot/"
       else

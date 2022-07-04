@@ -1,9 +1,3 @@
-# Mahbucket
-Short description and motivation.
-
-## Usage
-How to use my plugin.
-
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -21,8 +15,23 @@ Or install it yourself as:
 $ gem install mahbucket
 ```
 
-## Contributing
-Contribution directions go here.
+## Configuration
+`config/initializers/mahbucket.rb`
 
-## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+```ruby
+require 'mahbucket'
+
+authorize_request = Proc.new do |request|
+    # Define how to authroize a request   
+end
+
+Mahbucket.setup do |config|
+  config.authorize_request = authorize_request
+  config.s3_credentials = {
+    region: <region>
+    bucket: <bucket name>,
+    access_key_id: <access key id>
+    secret_access_key: <secret access key>
+  }
+end
+```
